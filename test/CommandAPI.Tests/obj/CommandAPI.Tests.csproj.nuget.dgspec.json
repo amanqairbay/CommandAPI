@@ -1,7 +1,7 @@
 {
   "format": 1,
   "restore": {
-    "/Users/amankairbayev/Documents/CommandAPISolution/tests/CommandAPI.Tests/CommandAPI.Tests.csproj": {}
+    "/Users/amankairbayev/Documents/CommandAPISolution/test/CommandAPI.Tests/CommandAPI.Tests.csproj": {}
   },
   "projects": {
     "/Users/amankairbayev/Documents/CommandAPISolution/src/CommandAPI/CommandAPI.csproj": {
@@ -38,6 +38,34 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "Microsoft.AspNetCore.JsonPatch": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,14 +89,14 @@
         }
       }
     },
-    "/Users/amankairbayev/Documents/CommandAPISolution/tests/CommandAPI.Tests/CommandAPI.Tests.csproj": {
+    "/Users/amankairbayev/Documents/CommandAPISolution/test/CommandAPI.Tests/CommandAPI.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/amankairbayev/Documents/CommandAPISolution/tests/CommandAPI.Tests/CommandAPI.Tests.csproj",
+        "projectUniqueName": "/Users/amankairbayev/Documents/CommandAPISolution/test/CommandAPI.Tests/CommandAPI.Tests.csproj",
         "projectName": "CommandAPI.Tests",
-        "projectPath": "/Users/amankairbayev/Documents/CommandAPISolution/tests/CommandAPI.Tests/CommandAPI.Tests.csproj",
+        "projectPath": "/Users/amankairbayev/Documents/CommandAPISolution/test/CommandAPI.Tests/CommandAPI.Tests.csproj",
         "packagesPath": "/Users/amankairbayev/.nuget/packages/",
-        "outputPath": "/Users/amankairbayev/Documents/CommandAPISolution/tests/CommandAPI.Tests/obj/",
+        "outputPath": "/Users/amankairbayev/Documents/CommandAPISolution/test/CommandAPI.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/amankairbayev/.nuget/NuGet/NuGet.Config"
@@ -100,9 +128,21 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.1.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.2, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
