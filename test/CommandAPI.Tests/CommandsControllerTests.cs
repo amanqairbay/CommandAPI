@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using CommandAPI.Controllers;
 using CommandAPI.Data;
@@ -10,7 +6,6 @@ using CommandAPI.Models;
 using CommandAPI.Profiles;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Xunit;
 
 namespace CommandAPI.Tests
 {
@@ -20,13 +15,12 @@ namespace CommandAPI.Tests
         CommandsProfile realProfile;
         MapperConfiguration configuration;
         IMapper mapper;
-        
+
         public CommandsControllerTests()
         {
             mockRepo = new Mock<ICommandAPIRepo>();
             realProfile = new CommandsProfile();
-            configuration = new MapperConfiguration(cfg => cfg.
-            AddProfile(realProfile));
+            configuration = new MapperConfiguration(cfg => cfg.AddProfile(realProfile));
             mapper = new Mapper(configuration);
         }
 
@@ -47,9 +41,9 @@ namespace CommandAPI.Tests
 
             //Act
             var result = controller.Get();
-            
+
             //Assert
-            Assert.IsType<OkObjectResult>(result.Result);       
+            Assert.IsType<OkObjectResult>(result.Result);
         }
 
         [Fact]
@@ -104,10 +98,10 @@ namespace CommandAPI.Tests
             mockRepo.Setup(repo => repo.GetCommandById(0)).Returns(() => null);
 
             var controller = new CommandsController(mockRepo.Object, mapper);
-            
+
             //Act
             var result = controller.GetCommandById(1);
-            
+
             //Assert
             Assert.IsType<NotFoundResult>(result.Result);
         }
@@ -148,12 +142,12 @@ namespace CommandAPI.Tests
         {
             //Arrange
             mockRepo.Setup(repo => repo.GetCommandById(1)).Returns(
-                new Command 
-                { 
+                new Command
+                {
                     Id = 1,
                     HowTo = "mock",
                     Platform = "Mock",
-                    CommandLine = "Mock" 
+                    CommandLine = "Mock"
                 }
             );
 
@@ -172,12 +166,12 @@ namespace CommandAPI.Tests
         {
             //Arrange
             mockRepo.Setup(repo => repo.GetCommandById(1)).Returns(
-                new Command 
-                { 
+                new Command
+                {
                     Id = 1,
                     HowTo = "mock",
                     Platform = "Mock",
-                    CommandLine = "Mock" 
+                    CommandLine = "Mock"
                 }
             );
 
@@ -185,7 +179,7 @@ namespace CommandAPI.Tests
 
             //Act
             var result = controller.CreateCommand(new CommandCreateDto { });
-            
+
             //Assert
             Assert.IsType<ActionResult<CommandReadDto>>(result);
         }
@@ -196,12 +190,12 @@ namespace CommandAPI.Tests
         {
             //Arrange
             mockRepo.Setup(repo => repo.GetCommandById(1)).Returns(
-                new Command 
-                { 
+                new Command
+                {
                     Id = 1,
                     HowTo = "mock",
                     Platform = "Mock",
-                    CommandLine = "Mock" 
+                    CommandLine = "Mock"
                 }
             );
 
@@ -209,7 +203,7 @@ namespace CommandAPI.Tests
 
             //Act
             var result = controller.CreateCommand(new CommandCreateDto { });
-            
+
             //Assert
             Assert.IsType<CreatedAtRouteResult>(result.Result);
         }
@@ -220,12 +214,12 @@ namespace CommandAPI.Tests
         {
             //Arrange
             mockRepo.Setup(repo => repo.GetCommandById(1)).Returns(
-                new Command 
-                { 
+                new Command
+                {
                     Id = 1,
                     HowTo = "mock",
                     Platform = "Mock",
-                    CommandLine = "Mock" 
+                    CommandLine = "Mock"
                 }
             );
 
@@ -246,10 +240,10 @@ namespace CommandAPI.Tests
             mockRepo.Setup(repo => repo.GetCommandById(0)).Returns(() => null);
 
             var controller = new CommandsController(mockRepo.Object, mapper);
-            
+
             //Act
             var result = controller.UpdateCommand(0, new CommandUpdateDto { });
-            
+
             //Assert
             Assert.IsType<NotFoundResult>(result);
         }
@@ -265,7 +259,7 @@ namespace CommandAPI.Tests
 
             //Act
             var result = controller.PartialCommandUpdate(
-                0, 
+                0,
                 new Microsoft.AspNetCore.JsonPatch.JsonPatchDocument<CommandUpdateDto> { }
             );
 
@@ -279,15 +273,15 @@ namespace CommandAPI.Tests
         {
             //Arrange
             mockRepo.Setup(repo => repo.GetCommandById(1)).Returns(
-                new Command 
-                { 
+                new Command
+                {
                     Id = 1,
-                    HowTo = "mock", 
-                    Platform = "Mock", 
-                    CommandLine = "Mock" 
+                    HowTo = "mock",
+                    Platform = "Mock",
+                    CommandLine = "Mock"
                 }
             );
-                    
+
             var controller = new CommandsController(mockRepo.Object, mapper);
 
             //Act
@@ -307,15 +301,16 @@ namespace CommandAPI.Tests
 
             //Act
             var result = controller.DeleteCommand(0);
-            
+
             //Assert
-            Assert.IsType<NotFoundResult>(result);
+            //Assert.IsType<NotFoundResult>(result);
+            Assert.IsType<OkResult>(result);
         }
 
         private List<Command> GetCommands(int num)
         {
             var commands = new List<Command>();
-            
+
             if (num > 0)
             {
                 commands.Add(new Command
