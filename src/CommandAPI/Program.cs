@@ -22,6 +22,8 @@ builder.Services.AddControllers().AddNewtonsoftJson(s => {
 var app = builder.Build();
 var env = app.Environment;
 
+var dbContext = app.Services.GetRequiredService<CommandContext>();
+dbContext.Database.Migrate();;
 if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); }
 
 app.UseRouting();
